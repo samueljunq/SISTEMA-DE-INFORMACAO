@@ -1,0 +1,17 @@
+# inclui  < stdio.h >
+# inclui  < string.h >
+
+int  main (){
+	char v[ 101 ], aux[ 101 ];
+	int i, n, j;
+	
+	obtém (v);
+	n = strlen (v);
+	j = n - 1 ;
+	
+	for (i = 0 ; i < n; i++){
+		aux[i] = v[j];
+		j--;
+	}
+	printf ( " %s " ,aux);
+}
