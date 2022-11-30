@@ -1,0 +1,7 @@
+#include<stdio.h>
+int ehPar( int num ){
+	if( num % 2 == 0)
+		retornar 1;
+	senão
+		retorna 0;
+}
