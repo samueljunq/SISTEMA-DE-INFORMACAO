@@ -1,0 +1,16 @@
+#include<stdio.h>
+
+int fat(int n){
+	int f = 1, g = 1;    
+	while(f -1!= n){
+		(g*=f);
+		f++; // Para poder correr o laço //
+}	
+	return g;
+}
+int main(){
+	int ft;
+	scanf("%d",&ft);
+	printf("\n%d",fat(ft)); 
+	return 0;
+}
