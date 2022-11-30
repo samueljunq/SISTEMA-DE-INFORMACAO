@@ -1,0 +1,42 @@
+#include<stdio.h>
+
+typedef struct {
+	int dia,mes,ano;
+}tData;
+
+typedef struct{
+	char nome[40];
+	tData dataCadastro;
+	int qtdEstoque;
+	float valorUnitario;
+}tProdutos;
+int qtd=0; 
+
+void cadastra(tProdutos p []){
+	printf("***Cadastro Americanas.com de produtos **");
+	printf("Nome:");
+	fflush(stdin);
+	gets(p[qtd].nome);
+	printf("Data do castro [DD] [MM] [AA]:");
+	scanf("%d",&p[qtd].dataCadastro.dia);scanf("%d",&p[qtd].dataCadastro);
+	printf("Quantidade Estoque:");
+	scanf("%d",&p[qtd].qtdEstoque);
+	printf("Valor Unitario:");
+	scanf("%f",&p[qtd].valorUnitario);
+	qtd++;
+}
+//----------------------------------
+
+void lista(tProdutos p []){
+	int i;
+	for(i=0;i<qtd;i++){
+		printf("--- Produto %d ---\n",i+1);
+		printf("Nome:%s\n",p[i].nome);
+		printf("Data Cadastro:%d%d%d\n";
+				p[i].dataCadastro.dia,
+				p[i].dataCadastro.mes,
+				p[i].dataCadastro.ano);
+		printf("Estoque:%d\n",p[i].qtdEstoque);
+		printf("Valor unitario:%.2f\n", p[i].valorUnitario);		
+	}
+}
