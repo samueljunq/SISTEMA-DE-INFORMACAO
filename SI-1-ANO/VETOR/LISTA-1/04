@@ -1,0 +1,41 @@
+# inclui  < stdio.h >
+# inclui  < stdlib.h >
+# inclui  < time.h >
+
+void  geravet ( int v[], int n){
+	int ;
+	srand ( tempo ( NULL ));
+	para (i= 0 ;i<n;i++)
+		v[i]= rand ()% 100 ;
+}
+
+void  printv ( int vet[], int n){
+	int ;
+	para (i= 0 ;i<n;i++)
+		printf ( " %d | " ,vet[i]);
+	printf ( " \n " );
+
+}
+
+int  contimp ( int v[], int n){
+	int i, cnt = 0 ;
+	for (i = 0 ; i < n; i++){
+		if (v[i]% 2 != 0 )
+			cnt++;
+	}
+	retorno cnt;
+}
+
+
+int  main (){
+	int n, v[ 100 ];
+	printf ( " Qtd de valores: " );
+	scanf ( " %d " , &n);
+	
+	geravet (v, n);
+	printf ( " \n Quantidade de Impar: %.d \n " , contimp (v,n));
+	printf ( " Vetor: \n " );
+	printv (v, n);
+	
+	retorna  0 ;
+}
