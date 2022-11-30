@@ -1,0 +1,7 @@
+#include<stdio.h>
+int gordo( int n ){
+	int i, s = 1;
+	for(i = 1; i <= n; i++)
+		s *= eu;
+	retornar s;
+}
