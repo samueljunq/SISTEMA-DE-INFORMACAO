@@ -1,0 +1,29 @@
+
+#include<stdio.h>
+#include<stdlib.h>
+#include<tempo.h>
+
+void geraVet(int v[], int n){
+	int eu;
+	srand(tempo(NULL)); // inicializa o gerador de números aleatórios
+	for(i=0;i<n;i++)
+		v[i]=rand()%20; //rand gera números aleatórios de 4/5 dígitos, como quero menos de 0 a 19, (%20)
+}
+		
+		void printVet(int v[], int n){
+			int eu;
+			for(i=0; i<n; i++)
+			printf("%d |",v[i]);
+			printf("\n");
+			
+}
+
+int main(){
+	int vet[100], n;
+	printf("Qntd de elementos do Vetor:");
+	scanf("%d",&n);
+	geraVet(vet,n); //usando o crtl + barra para buscar variavel em atalho
+	printf("Vetor gerado:\n");
+	printVet(vet,n);
+	retorna 0;	
+}
