@@ -1,0 +1,33 @@
+#include< stdio.h >
+
+void  printv ( float vet[], int n){
+	int ;
+	para (i= 1 ;i<n+ 1 ;i++)
+		printf ( " %.2f | " ,vet[i]);
+	printf ( " \n " );
+}
+
+int  main (){
+	
+	float v[ 5 ], aux, med;
+	int , j, l;
+	
+	printf ( " Informe o valor das notas: \n " );
+	para (i = 0 ; i < 5 ; i++)
+		scanf ( " %f " , &v[i]);
+		
+	para (i = 5 ; i > 0 ; i--){
+		for (j = 0 ; j < i; j++){
+			if (v[j] > v[j+ 1 ]){		
+				aux = v[j];
+				v[j] = v[j+ 1 ];
+				v[j+ 1 ] = auxiliar;
+			}
+		}
+	}
+			
+	med = v[ 4 ] + v[ 3 ] + v[ 2 ];
+	printf ( " \n Mídia: %.2f \n " , med);
+	
+	retorno ;
+}
