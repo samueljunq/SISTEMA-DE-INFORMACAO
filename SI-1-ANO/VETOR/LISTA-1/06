@@ -1,0 +1,55 @@
+# inclui  < stdio.h >
+# inclui  < stdlib.h >
+# inclui  < time.h >
+# inclui  < stdbool.h >
+
+void  geravet ( int v[], int n){
+	int ;
+	srand ( tempo ( NULL ));
+	para (i= 0 ;i<n;i++)
+		v[i]= rand ()% 100 ;
+}
+
+void  printv ( int vet[], int n){
+	int ;
+	para (i= 0 ;i<n;i++)
+		printf ( "  %d | " ,vet[i]);
+	printf ( " \n " );
+
+}
+
+int  num ( int v[], int j, int n){
+	int ;
+	for (i = 0 ; i < n; i++){
+		se (j == v[i])
+			retorno eu;	
+	}
+	retorna  0 ;
+}
+
+
+int  main (){
+	int n, v[ 100 ], j, k;
+	printf ( " Qtd de valores: " );
+	scanf ( " %d " , &n);
+	
+	geravet (v, n);
+	printf ( " \n Digite um valor: \n " );
+	bool t = verdadeiro ;
+	
+	fazer {
+		scanf ( " %d " , &j);
+		k = num (v, j, n);
+		se (k == 0 )
+			printf ( " Valor nao esta no Vetor! \n " );
+		senão {
+			printf ( " Valor presente no vetor na posicao [ %d ] " , k);
+			t = falso ;
+		}	
+	} enquanto (t);
+	
+	printf ( " \n Vetor: \n " );
+	printv (v, n);
+	
+	retorna  0 ;
+}
