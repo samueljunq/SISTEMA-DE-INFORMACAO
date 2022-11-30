@@ -1,0 +1,22 @@
+#include<stdio.h>
+#include<stdlib.h>
+int main(){
+	int ATG;
+	char filamento[0];
+	int eu;
+		para (i= 0 ;i< 100 ;i++)		
+				if (filamento[i]== 'a' && filamento[i+ 1 ]== 't' && filamento[i+ 2 ]== 'g' )
+					retorna 0;
+	teste int, dna;
+	printf("Digito do filamento de DNA:");
+	scanf("%d",&dna);
+	fflush (stdin);
+	teste = ATG;
+	if (teste== 1 ){
+		printf("\n EXISTE");
+	}
+	senão {
+	printf("\nINEXISTENTE");
+	}
+	retorna 0;
+}
