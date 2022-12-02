@@ -1,0 +1,216 @@
+# include  < stdio.h >
+# include  < stdlib.h >
+# inclui  < string.h >
+
+typedef  struct {
+	char nome[ 50 ];
+	int matrícula, n1, n2, n3;
+}alunos;
+
+int qtd = 0 ;
+
+void  addAluno (alunos a[]){
+	
+	printf ( " Nome: " );
+	fflush (stdin);
+	obtém (a[qtd]. nome );
+	
+	printf ( " Matrícula: " );
+	scanf ( " %d " , &a[qtd]. matrícula );
+	
+	printf ( " Nota Prova 01: " );
+	scanf ( " %d " , &a[qtd]. n1 );
+	
+	printf ( " Nota Prova 02: " );
+	scanf ( " %d " , &a[qtd]. n2 );
+	
+	printf ( " Nota Prova 03: " );
+	scanf ( " %d " , &a[qtd]. n3 );
+	
+	printf ( " \n Aluno cadastrado com sucesso! :) " );
+	
+	qtd++;
+}
+
+void  listaAlunos (alunos a[]){
+	int i, j = - 1 ;
+	float med = 0.0 , maior;
+	for (i = 0 ; i < qtd; i++){
+		printf ( " -- Aluno %2d -- \n " , i+ 1 );
+		printf ( " Nome: %s \n " , a[i]. nome );
+		printf ( " Matrícula: %d \n " , a[i]. matrícula );
+		printf ( " Nota Provas: %2d | %2d | %2d \n " , a[i]. n1 , a[i]. n2 , a[i]. n3 );
+		med = (a[i]. n1 + a[i]. n2 + a[i]. n3 )/ 3 ;
+		printf ( " Mídia: %.2f \n " , med);
+		
+		se (i == 0 )
+			maior = médio;
+		outra coisa {
+			if (médio > maior){
+				maior = médio;
+				j = eu;
+			}
+		}
+		
+		se (med >= 6 )
+			printf ( " Aluno Aprovado! :) \n " );
+		senão
+			printf ( " Aluno Reprovado! :( \n " );
+		printf ( " --------------------------- \n\n " );
+	}
+	
+	se (j == - 1 )
+		printf ( " \n Nenhum Aluno cadastrado! " );
+	senão
+		printf ( " O aluno com maior media eh o(a) %s , com %.2f de media! \n " , a[j]. nome , maior);
+}
+
+void  buscaAluno (alunos a[], int op){
+	int i, j = - 1 , mat;
+	char aux[ 50 ], busca[ 50 ];
+	flutuação média = 0,0 ;
+	
+	if (op == 1 ){
+		printf ( " Informe o nome: " );
+		fflush (stdin);
+		pega (busca);
+		strlwr (busca);
+		
+		for (i = 0 ; i < qtd; i++){
+			strcpy (aux, a[i]. nome );
+			strlwr (aux);
+			
+			if ( strcmp (aux, busca) == 0 ){
+				printf ( " \n -- Aluno %2d -- \n " , i+ 1 );
+				printf ( " Nome: %s \n " , a[i]. nome );
+				printf ( " Matrícula: %d \n " , a[i]. matrícula );
+				printf ( " Nota Provas: %2d | %2d | %2d \n " , a[i]. n1 , a[i]. n2 , a[i]. n3 );
+				med = (a[i]. n1 + a[i]. n2 + a[i]. n3 )/ 3 ;
+				printf ( " Mídia: %.2f \n " , med);
+				
+				se (med >= 6 )
+					printf ( " Aluno Aprovado! :) \n " );
+				senão
+					printf ( " Aluno Reprovado! :( \n " );
+					
+				j = 1 ;
+				quebrar ;
+			}
+		}
+	} senão  se (op == 2 ){
+		printf ( " Informe a matricula: " );
+		scanf ( " %d " , &mat);
+		
+		for (i = 0 ; i < qtd; i++){
+			if (mat == a[i]. matrícula )
+				printf ( " \n -- Aluno %2d -- \n " , i+ 1 );
+				printf ( " Nome: %s \n " , a[i]. nome );
+				printf ( " Matrícula: %d \n " , a[i]. matrícula );
+				printf ( " Nota Provas: %2d | %2d | %2d \n " , a[i]. n1 , a[i]. n2 , a[i]. n3 );
+				med = (a[i]. n1 + a[i]. n2 + a[i]. n3 )/ 3 ;
+				printf ( " Mídia: %.2f \n " , med);
+								
+				se (med >= 6 )
+					printf ( " Aluno Aprovado! :) \n " );
+				senão
+					printf ( " Aluno Reprovado! :( \n " );
+					
+				j = 1 ;
+				quebrar ;
+		}
+	} senão
+		printf ( " Opção Inválida! " );
+	
+	se (j == - 1 )
+		printf ( " Aluno Nao Encontrado! " );
+
+}
+
+ menu int (){
+	operação int ;
+	
+	printf ( " *** Sistema Alunos *** \n\n " );
+	printf ( " 1- Cadastrar \n " );
+	printf ( " 2- Listar Alunos \n " );
+	printf ( " 3- Busca Aluno \n " );
+	printf ( " 0- Sair \n " );
+	printf ( " Digite uma opção: " );
+	scanf ( " %d " , &op);
+	printf ( " \n " );
+	
+	operação de retorno ;
+}
+
+void  salvaArq (alunos a[]){
+	ARQUIVO *arq;
+	int i = 0 ;
+	arq = fopen ( " dadosAlunos.txt " , " wb " );
+	fwrite (&a[i], sizeof (a), qtd, arq);
+	printf ( " Dados salvos com sucesso \n " );
+	fclose (arq);
+}
+	
+void  carregaArq (alunos a[]){
+	ARQUIVO *arq;
+	arq = fopen ( " dadosAlunos.txt " , " rb " );
+	if (arq == NULL ){
+		printf ( " Arquivo não encontrado :( \n " );
+		retorno ;
+	}
+	while ( fread (&a[qtd], sizeof (alunos), 1 , arq) > 0 )
+		qtd++;
+		
+	printf ( " Dados médicos com sucesso! \n " );
+	fclose (arq);
+}
+
+int  principal (){
+	
+	int i, op;
+	char aux[ 30 ];
+	
+	alunos aluno[ 100 ];
+	
+	printf ( " Deseja carregar dados de um arquivo?(1- Sim | 2- Nao): " );
+	scanf ( " %d " , &op);
+	se (op == 1 )
+		carregaArq (aluno);
+	senão  se (op != 2 )
+		printf ( " \n Opção Inválida, reinicie o app! " );
+		
+	pegue ();
+	sistema ( " cls " );
+	
+	fazer {
+		op = menu ();
+		interruptor (op){
+			caso  1 :
+				printf ( " Cadastro: \n " );
+				addAluno (aluno);
+				quebrar ;
+				
+			caso  2 :
+				printf ( " Lista de alunos: \n " );
+				listaAlunos (aluno);
+				quebrar ;
+				
+			caso  3 :
+				printf ( " Busca aluno: \n " );
+				printf ( " Deseja realizar a busca por nome ou matrícula(1- Nome | 2- Matrícula): " );
+				scanf ( " %d " , &i);
+				busca Aluno (aluno, i);
+				quebrar ;
+				
+			caso  0 :
+				printf ( " Saindo... \n " );
+				salvaArq (aluno);
+				quebrar ;
+				
+			padrão :
+				printf ( " \n Opção inválida! " );
+				quebrar ;		
+		}
+		pegue ();
+		sistema ( " cls " );
+	} while (op != 0 );
+}
