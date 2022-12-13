@@ -1,31 +1,30 @@
-# include  < stdio.h >
-# include  < stdlib.h >
-# inclui  < string.h >
+# include<stdio.h>
+# include<stdlib.h>
+# include<string.h>
 
 typedef  struct {
-	char título[ 30 ], autor[ 15 ];
+	char titulo[30], autor[15];
 	int ano, prateleira;
 }livros;
 
 int qtd = 0 ;
 
-void  addLivro (livros l[]){
+void addLivro (livros l[]){	
+	printf("Título do livro:");
+	fflush(stdin);
+	get(l[qtd].titulo);
 	
-	printf ( " Título: " );
-	fflush (stdin);
-	obtém (l[qtd]. título );
+	printf("Autor do livro:");
+	fflush(stdin);
+	get(l[td].autor);
 	
-	printf ( " Autor: " );
-	fflush (stdin);
-	obtém (l[qtd]. autor );
+	printf ("Ano de lançamento do livro:");
+	scanf ("%d", &l[qtd].ano) ;
 	
-	printf ( " Ano: " );
-	scanf ( " %d " , &l[qtd].ano ) ;
+	printf ("A prateleira do livro:");
+	scanf ("%d", &l[qtd].prateleira) ;
 	
-	printf ( " Prateleira: " );
-	scanf ( " %d " , &l[qtd].prateleira ) ;
-	
-	printf ( " \n Livro cadastrado com sucesso! :) " );
+	printf ("\n Livro cadastrado com [SUCESSO]!");
 	
 	qtd++;
 }
@@ -33,37 +32,37 @@ void  addLivro (livros l[]){
 void  listaLivro (livros l[]){
 	int i, j = - 1 ;
 	for (i = 0 ; i < qtd; i++){
-		printf ( " -- Livro %2d -- \n " , i+ 1 );
-		printf ( " Titulo: %s \n " ,l[i]. titulo );
-		printf ( " Autor: %s \n " , l[i]. autor );
-		printf ( " Ano: %d \n " ,l[i] .ano );
-		printf ( " Prateleira: %d \n " , l[i]. prateleira );
-		printf ( " --------------------------- \n\n " );
-		j = 1 ;
+		printf ("-- Livro %2d --\n" , i+ 1);
+		printf ("Titulo: %s \n" ,l[i].titulo);
+		printf ("Autor: %s \n" , l[i].autor);
+		printf ("Ano: %d \n" ,l[i].ano );
+		printf ("Prateleira: %d \n " ,l[i].prateleira);
+		printf ("---------------------------\n\n");
+		j = 1;
 	}
-	se (j == - 1 )
-		printf ( " \n Nenhum livro cadastrado! " );
+	se (j == - 1)
+		printf ("\n Nenhum livro encontrado!");
 }
 
 void  buscaLivro (livros l[], char busca[]){
-	int i, j = - 1 ;
+	int i, j = - 1;
 	char aux[ 30 ];
 	strlwr (busca);
 	
 	for (i = 0 ; i < qtd; i++){
-		strcpy (aux, l[i]. título );
-		strlwr (aux);
-		if ( strcmp (aux, busca) == 0 ){
+		strcpy(aux,l[i].titulo );
+		strlwr(aux);
+		if (strcmp(aux, busca) == 0){
 			j = 1 ;
-			printf ( " \n -- Livro %2d -- \n " , i+ 1 );
-			printf ( " Titulo: %s \n " ,l[i]. titulo );
-			printf ( " Prateleira: %d \n " , l[i]. prateleira );
+			printf ("\n -- Livro %2d -- \n ", i+ 1 );
+			printf ("Titulo: %s \n " ,l[i].titulo );
+			printf ("Prateleira: %d \n ",l[i].prateleira );
 			quebrar ;
 		}
 	}
 	
 	se (j == - 1 )
-		printf ( " Livro Não Encontrado! " );
+		printf ("Livro Não Encontrado!");
 
 }
 
@@ -71,82 +70,78 @@ void  filtrarAno (livros l[], int busca){
 	int i, j = - 1 , cnt = 0 ;
 	for (i = 0 ; i < qtd; i++){
 		if (l[i]. ano >= busca){
-			printf ( " -- Livro %2d -- \n " , i+ 1 );
-			printf ( " Titulo: %s \n " ,l[i]. titulo );
-			printf ( " Autor: %s \n " , l[i]. autor );
-			printf ( " Ano: %d \n " ,l[i] .ano );
-			printf ( " Prateleira: %d \n " , l[i]. prateleira );
-			printf ( " --------------------------- \n\n " );
+			printf ("-- Livro %2d -- \n " , i+ 1);
+			printf ("Titulo: %s \n " ,l[i]. titulo);
+			printf ("Autor: %s \n " , l[i]. autor);
+			printf ("Ano: %d \n " ,l[i] .ano);
+			printf ("Prateleira: %d \n " , l[i]. prateleira);
+			printf ("--------------------------- \n\n");
 			j = 1 ;
 			cnt++;	
 		}
 	}
-	se (j == - 1 )
-		printf ( " Nenhum livro lançado após o ano informado! " );
-	senão
-		printf ( " Existem %d livros lançados após o ano informado! " , cnt);
+	if (j == - 1 )
+		printf ("Nenhum livro lançado após o ano informado!");
+	else
+		printf ("Existem %d livros lançados após o ano informado!",cnt);
 }
 
  menu int (){
-	operação int ;
+	int ;
 	
-	printf ( " *** Livraria *** \n\n " );
-	printf ( " 1- Cadastrar \n " );
-	printf ( " 2- Listar Livros \n " );
-	printf ( " 3- Busca Livro \n " );
-	printf ( " 4-Filtro Ano \n " );
-	printf ( " 0- Sair \n " );
-	printf ( " Digite uma opção: " );
-	scanf ( " %d " , &op);
-	printf ( " \n " );
+	printf ("*** Livraria *** \n\n ");
+	printf ("1- Cadastrar \n");
+	printf ("2- Listar Livros \n");
+	printf ("3- Busca Livro \n");
+	printf ("4-Filtro Ano \n");
+	printf ("0- Sair \n");
+	printf ("Digite uma opção:");
+	scanf  ("%d ", &op);
+	printf ("\n");
 	
-	operação de retorno ;
-}
-	
-	
+	return 0;
+}	
 int  principal (){
-	
 	int i, op;
 	char aux[ 30 ];
 	
-	livros livro[ 100 ];
-	
-	fazer {
+	livros livro[ 100 ];	
+	switch {
 		op = menu ();
-		interruptor (op){
-			caso  1 :
-				printf ( " Cadastro: \n " );
+		int (op){
+			case 1 :
+				printf ("Cadastro: \n");
 				addLivro (livro);
-				quebrar ;
+				break;
 				
-			caso  2 :
-				printf ( " Lista de Livros: \n " );
+			case 2 :
+				printf ("Lista de Livros:\n");
 				listaLivro (livro);
-				quebrar ;
+				break;
 				
-			caso  3 :
-				printf ( " Busca Livro: \n " );
+			case 3 :
+				printf ("Busca Livro:\n");
 				fflush (stdin);
 				recebe (aux);
 				buscaLivro (livro, aux);
-				quebrar ;
+				break;
 				
-			caso  4 :
-				printf ( " Filtro ano: \n " );
-				printf ( " Informe o ano: " );
-				scanf ( " %d " , &i);
+			case 4 :
+				printf ("Filtro [ANO]:\n" );
+				printf ("Informe o [ANO]:" );
+				scanf  ("%d ", &i);
 				filtrarAno (livro, i);
-				quebrar ;
+				break;
 				
-			caso  0 :
-				printf ( " Saindo... \n " );
-				quebrar ;
+			case 0 :
+				printf ("Fechando...\n ");
+				break;
 				
-			padrão :
-				printf ( " \n Opção inválida! " );
-				quebrar ;		
+			case :
+				printf ("\n Opção inválida!");
+				break;		
 		}
-		pegue ();
+		return 0;
 		sistema ( " cls " );
 	} while (op != 0 );
 }
