@@ -1,27 +1,30 @@
-# include  < stdio.h >
-# include  < stdlib.h >
-# inclui  < string.h >
+#include<stdio.h>
+#include<stdlib.h>
+#include<string.h>
+
 
 typedef  struct {
-	char nome[ 50 ];
-	float potência, tempo;
-}elétrico;
+	char nome[50+];
+	float potencia,tempo;
+}eletrico;
+
 
 int qtd = 0 ;
 
+
 void  addEletro (eletro e[]){
 	
-	printf ( " Nome: " );
+	printf ("DIGITE O NOME DO PRODUTO [ELETRODOMÉSTICO]:");
 	fflush (stdin);
-	get (e[qtd]. nome );
+	get (e[qtd].nome);
 	
-	printf ( " Potência em Watts: " );
-	scanf ( " %f " , &e[qtd]. potencia );
+	printf ("DIGITE A POTENCIA DO APARELHO EM [WATTS]:");
+	scanf ( " %f ", &e[qtd].potencia);
 	
-	printf ( " Tempo médio ativo por dia: " );
-	scanf ( " %f " , &e[qtd]. tempo );
+	printf ("TEMPO DO APARELHO LIGADO POR DIA:");
+	scanf ("%f ",&e[qtd].tempo);
 	
-	printf ( " \n Eletrodoméstico cadastrado com sucesso! :) " );
+	printf ("\n|-|ELETRO CADASTRADO|-|");
 	
 	qtd++;
 }
@@ -30,44 +33,40 @@ void  listaEletro (eletro e[]){
 	int i, j = - 1 ;
 	
 	for (i = 0 ; i < qtd; i++){
-		printf ( " \n -- Eletro %2d -- \n " , i+ 1 );
-		printf ( " Nome: %s \n " , e[i]. nome );
-		printf ( " Potência: %.1f W \n " , e[i]. potencia );
-		printf ( " Tempo Ativo(dia): %.1f h \n " , e[i]. tempo );
+		printf ("\n--ELETRO %2d--\n", i+ 1 );
+		printf ("NOME: %s \n", e[i].nome);
+		printf ("POTÊNCIA: %.1f W \n", e[i].potencia);
+		printf ("TEMPO DE USO(DIARIO):%.1f h \n",e[i].tempo);
 		j = 1 ;
 	}
 	
-	se (j == - 1 )
-		printf ( " \n Nenhum Eletrodoméstico cadastrado! " );
+	if(j == - 1 )
+		printf ("\n NAO ENCONTRADO NENHUM ELETRO!");
 
 }
 
 void  buscaEletro (eletro e[]){
 	int i, j = - 1 ;
 	char busca[ 50 ], aux[ 50 ];
-	
-		printf ( " Informe o nome: " );
-		fflush (stdin);
-		pega (busca);
-		strlwr (busca);
-		
-		for (i = 0 ; i < qtd; i++){
-			strcpy (aux, e[i]. nome );
+		  printf ("DIGITE O NOME:");
+		  fflush (stdin);
+		  pega (busca);
+		  strlwr (busca);
+		for (i=0;i<qtd;i++){
+			strcpy (aux,e[i].nome);
 			strlwr (aux);
 			
-			if ( strcmp (aux, busca) == 0 ){
-				printf ( " \n -- Eletro %2d -- \n " , i+ 1 );
-				printf ( " Nome: %s \n " , e[i]. nome );
-				printf ( " Potência: %.1f W \n " , e[i]. potencia );
-				printf ( " Tempo Ativo(dia): %.1f h \n " , e[i]. tempo );
+			if (strcmp (aux, busca) == 0 ){
+				printf("\n -- Eletro %2d -- \n", i+ 1 );
+				printf("NOME: %s \n",e[i].nome );
+				printf("POTÊNCIA: %.1f W \n " , e[i]. potencia );
+				printf("TEMPO DE USO(DIARIO):%.1f h \n ",e[i].tempo );
 				j = 1 ;
-				quebrar ;
+				break ;
 			}
 		}
-
-	
-	se (j == - 1 )
-		printf ( " Eletrodoméstico Não Encontrado! " );
+	if (j == - 1 )
+		printf ("\n NAO ENCONTRADO NENHUM ELETRO!");
 
 }
 
@@ -75,19 +74,19 @@ void  filtroEletro (eletro e[], float valor, float busca){
 	int i, j = - 1 ;
 	flutuar gasto;
 	
-	for (i = 0 ; i < qtd; i++){
-		gasto = ((e[i]. potência * e[i]. tempo * 1 )/ 1000 )*valor;
-		  if (gasto* 30 >= busca){
-			printf ( " \n -- Eletro %2d -- \n " , i+ 1 );
-			printf ( " Nome: %s \n " , e[i]. nome );
-			printf ( " Potência: %.1f W \n " , e[i]. potencia );
-			printf ( " Tempo Ativo(dia): %.1f h \n " , e[i]. tempo );
-			printf ( " O %s gasta R$ %.1f por mes ou R$ %.1f por dia! \n " , e[i]. nome , gasto* 30 , gasto);
+	for (i=0;i<qtd;i++){
+		gasto = ((e[i].potencia * e[i].tempo*1)/1000 )*valor;
+		  if (gasto*30 >= busca){
+			printf ("\n -- Eletro %2d -- \n ", i+ 1 );
+			printf ("Nome: %s \n " ,e[i].nome );
+			printf ("Potência: %.1f W \n " ,e[i].potencia );
+			printf ("Tempo Ativo(dia): %.1f h \n " ,e[i].tempo );
+			printf ("O %s gasta R$ %.1f por mes ou R$ %.1f por dia! \n ", e[i].nome, gasto*30 ,gasto);
 			j = 1 ;
 		}
 	}
-	se (j == - 1 )
-		printf ( " \n Nenhum Eletrodomestico com gasto superior a R$ %.1f por mes! " , busca);
+	 	if (j == - 1 )
+			printf ( " \n NENHUM ELETRO COM GASTO SUPERIOR A:R$ %.1f POR MÊS! ",busca);
 }
 
 void  gastosEletro (eletro e[], float kwh){
@@ -95,8 +94,8 @@ void  gastosEletro (eletro e[], float kwh){
 	flutuar res;
 	
 
-	para (i = 0 ; i < qtd; i++)
-		res += (e[i]. potência * e[i]. tempo * 1 )/ 1000 ;
+	para (i=0;i<qtd;i++)
+		res += (e[i].potencia * e[i].tempo*1 )/ 1000 ;
 
 
 
@@ -106,42 +105,42 @@ void  gastosEletro (eletro e[], float kwh){
 }
 
  menu int (){
-	operação int ;
+		int ;
 	
-	printf ( " *** Sistema Eletro *** \n\n " );
-	printf ( " 1- Cadastrar \n " );
-	printf ( " 2- Listar Eletrodomesticos \n " );
-	printf ( " 3- Busca Eletrodoméstico \n " );
-	printf ( " 4-Filtro R$ \n " );
-	printf ( " 5- Gastos \n " );
-	printf ( " 0- Sair \n " );
-	printf ( " Digite uma opção: " );
-	scanf ( " %d " , &op);
-	printf ( " \n " );
+	printf ("***---Sistema Eletro---*** \n\n");
+	printf ("1- CADASTRAR\n");
+	printf ("2- LISTAR ELETRODOMESTICOS\n");
+	printf ("3- BUSCAR ELETRODOMÉSTICOS\n");
+	printf ("4- FILTRO EM R$ \n");
+	printf ("5- GASTOS \n");
+	printf ("0- SAIR \n");
+	printf ("DIGITE UMA OPÇÃO:");
+	scanf ("%d",&op);
+	printf ("\n");
 	
-	operação de retorno ;
+	return 0;
 }
 
 void  salvaArq (eletro e[]){
 	ARQUIVO *arq;
 	int i = 0 ;
-	arq = fopen ( " dadosEletro.txt " , " wb " );
+	arq = fopen ("dadosEletro.txt","wb");
 	fwrite (&e[i], sizeof (e), qtd, arq);
-	printf ( " Dados salvos com sucesso \n " );
+	printf ("Dados salvos com sucesso\n");
 	fclose (arq);
 }
 	
 void  carregaArq (eletro e[]){
 	ARQUIVO *arq;
-	arq = fopen ( " dadosEletro.txt " , " rb " );
+	arq = fopen ("dadosEletro.txt","rb");
 	if (arq == NULL ){
-		printf ( " Arquivo não encontrado :( \n " );
+		printf ("ARQUIVO [NAO] ENCONTRADO!\n " );
 		retorno ;
 	}
 	while ( fread (&e[qtd], sizeof (eletro), 1 , arq) > 0 )
 		qtd++;
 		
-	printf ( " Dados médicos com sucesso! \n " );
+	printf ("DADOS SALVOS COM SUCESSO [SUCESS]!\n");
 	fclose (arq);
 }
 
@@ -155,58 +154,55 @@ int  principal (){
 	
 	printf ( " Deseja carregar dados de um arquivo?(1- Sim | 2- Nao): " );
 	scanf ( " %d " , &op);
-	se (op == 1 )
+	if (op == 1 )
 		carregaArq (eletrodom);
-	senão  se (op != 2 )
-		printf ( " \n Opção Inválida, reinicie o app! " );
-		
-	pegue ();
-	sistema ( " cls " );
+	else if (op != 2 )
+		printf ("\n Opção Inválida, reinicie o app!");
+	sistema("cls");
 	
-	fazer {
+	switch {
 		op = menu ();
-		interruptor (op){
-			caso  1 :
-				printf ( " Cadastro: \n " );
+		int(op){
+			case  1 :
+				printf("CADASTRO:\n");
 				addEletro (eletrodom);
-				quebrar ;
+				break;
 				
-			caso  2 :
-				printf ( " Lista de Eletrodomesticos: \n " );
+			case   2 :
+				printf("LISTA DE ELETRODOMÉSTICOS:\n");
 				listaEletro (eletrodom);
-				quebrar ;
+				break;
 				
-			caso  3 :
-				printf ( " Busca Eletrodomesticos: \n " );
-				buscaEletro (eletrodom);
-				quebrar ;
+			case  3 :
+				printf("BUSCA ELETRODOMÉSTICO:\n");
+				buscaEletro(eletrodom);
+				break;
 			
-			caso  4 :
-				printf ( " Filtro R$: \n " );
-				printf ( " Informe o valor do kW/h: " );
-				scanf ( " %f " , &kwh);
-				printf ( " \n Informe o valor do Filtro(R$ por mes): " );
-				scanf ( " %f " , &busca);
+			case  4 :
+				printf("FILTRO:R$ \n " );
+				printf("---INFORME O VALOR DO KW/H:---");
+				scanf("%f", &kwh);
+				printf("\n INFORMAR O VALOR DO FILTRO(R$ MES):");
+				scanf("%f", &busca);
 				filtroEletro (eletrodom, kwh, busca);
-				quebrar ;	
+				break;	
 				
-			caso  5 :
-				printf ( " Gastos: \n " );
-				printf ( " Informe o valor do kW/h: " );
-				scanf ( " %f " , &kwh);
+			case   5 :
+				printf("GASTOS: \n " );
+				printf("INFORMAR O VALOR DA KW/H:");
+				scanf("%f",&kwh);
 				gastosEletro (eletrodom, kwh);
-				quebrar ;
+				break;
 							
-			caso  0 :
-				printf ( " Saindo... \n " );
-				salvaArq (eletrodom);
-				quebrar ;
-				
-			padrão :
-				printf ( " \n Opção inválida! " );
-				quebrar ;		
+			case   0 :
+				printf ("RETORNANDO...\n");
+				salvaArq(eletrodom);
+				break;	
+			case:
+				printf ("\nOPCAO INVALIDA:");
+				break;		
 		}
-		pegue ();
+		return 0;
 		sistema ( " cls " );
 	} while (op != 0 );
 }
