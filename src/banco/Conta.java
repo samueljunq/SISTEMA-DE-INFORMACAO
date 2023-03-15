@@ -12,12 +12,29 @@ package banco;
 public class Conta
 {   
 
-    Cliente objCliente;// atributos ou variáveis de instância
-    double saldo;
-    double limite;
+    Cliente objCliente1 = new Cliente();
+    Cliente objCliente2;
+    private double saldo;
+    private double limite;
+    private int numero;
+    
+    Conta(){
+        System.out.println("Construindo uma conta!");
+    }
+    Conta(double saldo){
+        this();
+        this.saldo = saldo;
+    }
+    Conta(double saldo, int numero){
+        this(saldo); // invocar construtor anterior
+    }
+    public double getSaldo(){
+        return this.saldo;
+}
     
     public void deposita(double saldo){ // método
         this.saldo = this.saldo +saldo;
+        System.out.println("Depósito realizado para: "+objCliente1.getNome());
     }
     
     public boolean saca(double saldo){ // método
@@ -43,16 +60,4 @@ public class Conta
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-    String getSaldo() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
 }
-
-    class objCliente1 {
-
-    static String nome;
-
-    public objCliente1() {
-    }
-}
-}
-

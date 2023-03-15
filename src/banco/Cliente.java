@@ -14,5 +14,9 @@ public class Cliente {
     String nome;
     String sobrenome;
     String cpf;
+
+    String getNome() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     
 }
