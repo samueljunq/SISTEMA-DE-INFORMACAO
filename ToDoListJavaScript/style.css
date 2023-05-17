@@ -1,0 +1,59 @@
+/* Estilos para a classe 'jumbotron' */
+.jumbotron {
+    padding: 2rem;
+    margin-bottom: 2rem;
+    background-color: #7f8fa6;
+    color: #ffffff;
+    border-radius: 0.3rem;
+  }
+/* Estilos para a classe 'footer' */
+.footer {
+    padding: 2rem;
+    margin-bottom: 2rem;
+    background-color: #7f8fa6;
+    color: #ffffff;
+    border-radius: 0.3rem;
+  }
+  /* Estilos para o elemento 'h1' dentro da classe 'jumbotron' */
+  .jumbotron h1 {
+    font-size: 3rem;
+    font-weight: 500;
+    color: #fff;
+  }
+
+/* Estilos para a lista desordenada 'ul' */
+  ul {
+	list-style: none;
+	padding: 0;
+	margin-top: 20px;
+}
+/* Estilos para o elemento 'li' */
+li {
+	padding: 5px;
+	background-color: #f2f2f2;
+	border-radius: 5px;
+	margin-bottom: 5px;
+}
+/* Estilos para o elemento 'li' ao passar o mouse sobre ele */
+li:hover {
+  background-color: #e2e2e2;
+}
+/* Estilos para elementos com a classe 'btnColor' */
+.btnColor {
+  background-color: #7f8fa6;
+  color: #ffffff;
+}
+/* Estilos para elementos com a classe 'alertRemocao' */
+.alertRemocao {
+  background-color: #a5b0c0;
+  color: #ffffff;
+  border-color:grey;
+}
+/* Estilos para o elemento 'body' */
+.body{
+  background-color: #FCFCFC;
+}
+
+ 
+
+
