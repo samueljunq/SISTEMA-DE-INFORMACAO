@@ -1,0 +1,59 @@
+
+.jumbotron {
+    padding: 2rem;
+    margin-bottom: 2rem;
+    background-color: #7f8fa6;
+    color: #ffffff;
+    border-radius: 0.3rem;
+  }
+
+.footer {
+    padding: 2rem;
+    margin-bottom: 2rem;
+    background-color: #7f8fa6;
+    color: #ffffff;
+    border-radius: 0.3rem;
+  }
+  
+  .jumbotron h1 {
+    font-size: 3rem;
+    font-weight: 500;
+    color: #fff;
+  }
+
+
+  ul {
+	list-style: none;
+	padding: 0;
+	margin-top: 20px;
+}
+
+li {
+	padding: 5px;
+	background-color: #f2f2f2;
+	border-radius: 5px;
+	margin-bottom: 5px;
+}
+
+li:hover {
+  background-color: #e2e2e2;
+}
+
+.btnColor {
+  background-color: #7f8fa6;
+  color: #ffffff;
+}
+
+.alertRemocao {
+  background-color: #a5b0c0;
+  color: #ffffff;
+  border-color:grey;
+}
+
+.body{
+  background-color: #FCFCFC;
+}
+
+ 
+
+
