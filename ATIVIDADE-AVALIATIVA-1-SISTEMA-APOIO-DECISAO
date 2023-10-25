@@ -1,0 +1,161 @@
+{
+  "nbformat": 4,
+  "nbformat_minor": 0,
+  "metadata": {
+    "colab": {
+      "provenance": [],
+      "include_colab_link": true
+    },
+    "kernelspec": {
+      "name": "python3",
+      "display_name": "Python 3"
+    },
+    "language_info": {
+      "name": "python"
+    }
+  },
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "view-in-github",
+        "colab_type": "text"
+      },
+      "source": [
+        "<a href=\"https://colab.research.google.com/github/samueljunq/SISTEMA-DE-INFORMACAO/blob/main/ATIVIDADE-AVALIATIVA-1-SISTEMA-APOIO-DECISAO\" target=\"_parent\"><img src=\"https://colab.research.google.com/assets/colab-badge.svg\" alt=\"Open In Colab\"/></a>"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": null,
+      "metadata": {
+        "id": "_tOb4jm0wfnJ"
+      },
+      "outputs": [],
+      "source": [
+        "import pandas as pd\n",
+        "import random\n",
+        "\n",
+        "# Carregar o arquivo CSV\n",
+        "file_path = 'credit_risk_dataset.csv'\n",
+        "df = pd.read_csv(file_path)\n",
+        "\n",
+        "# Função para corrigir os dados\n",
+        "def corrigir_dados(df):\n",
+        "    # Corrigir a idade da pessoa se for menor que 18 e maior que 80\n",
+        "    df['person_age'] = df['person_age'].apply(lambda x: random.randint(18, 80) if x < 0 or x > 130 else x)\n",
+        "\n",
+        "    # Corrigir a renda da pessoa se for igual a zero deleta\n",
+        "    df['person_income'] = df['person_income'].apply(lambda x: max(0, x))\n",
+        "\n",
+        "    # Corrigir a propriedade da pessoa, caso não exista apague a pessoa do banco\n",
+        "    df['person_home_ownership'] = df['person_home_ownership'].apply(lambda x: random.choice(['MORTGAGE', 'OWN', 'RENT']))\n",
+        "    # Corrigir a propriedade da pessoa, transformando 'RENT' em 0 e 'MORTGAGE' em 1\n",
+        "    df['person_home_ownership'] = df['person_home_ownership'].apply(lambda x: 0 if x == 'RENT' else 1 if x == 'MORTGAGE' else random.choice([0, 1]))\n",
+        "\n",
+        "    # Corrigir a duração do emprego da pessoa deve ser maior que 0 e menor que 12 horas\n",
+        "    df['person_emp_length'] = df['person_emp_length'].apply(lambda x: random.randint(0, 12) if x < 0 or x > 12 else x)\n",
+        "\n",
+        "    # Filtrar a intenção do empréstimo somente empréstimos citados abaixo, fora do empréstrimo especificado remova os dados da pessoa do Banco\n",
+        "    df = df[df['loan_intent'].isin(['HOMEIMPROVEMENT', 'PERSONAL', 'EDUCATION', 'VENTURE', 'MEDICAL', 'DEBTCONSOLIDATION'])]\n",
+        "    # Mapear a intenção do empréstimo para os novos valores\n",
+        "    loan_intent_mapping = {\n",
+        "        'HOMEIMPROVEMENT': 0,\n",
+        "        'PERSONAL': 1,\n",
+        "        'EDUCATION': 2,\n",
+        "        'VENTURE': 3,\n",
+        "        'MEDICAL': 4,\n",
+        "        'DEBTCONSOLIDATION': 5\n",
+        "    }\n",
+        "    df['loan_intent'] = df['loan_intent'].map(loan_intent_mapping)\n",
+        "\n",
+        "    # Filtrar o grau do empréstimo, somente A até F são permitidos\n",
+        "    df = df[df['loan_grade'].isin(['A', 'B', 'C', 'D', 'E', 'F'])]\n",
+        "     # Mapear o grau do empréstimo para os novos valores\n",
+        "    loan_grade_mapping = {\n",
+        "        'A': 0,\n",
+        "        'B': 1,\n",
+        "        'C': 2,\n",
+        "        'D': 3,\n",
+        "        'E': 4,\n",
+        "        'F': 5\n",
+        "    }\n",
+        "    df['loan_grade'] = df['loan_grade'].map(loan_grade_mapping)\n",
+        "\n",
+        "    # Filtrar o valor do empréstimo, se for maior que 1 milhão apague o registro\n",
+        "    df = df[(df['loan_amnt'] >= 0) & (df['loan_amnt'] <= 100000)]\n",
+        "\n",
+        "    # Corrigir a taxa interna do empréstimo, somente com os valores condedidos, caso sejam menores que 10.0 e maior que 20.0 delete\n",
+        "    df['loan_int_rate'] = df['loan_int_rate'].apply(lambda x: 10.0 if x < 0 or x > 20.0 else x - 5.0 if x > 20.0 else x)\n",
+        "\n",
+        "    # Filtrar o status do empréstimo somente 0 para reprovado e 1 para aprovado, diferente apague o registro\n",
+        "    df = df[df['loan_status'].isin([0, 1])]\n",
+        "\n",
+        "    # Filtrar a renda percentual do empréstimo somente menor ou igual a 1.0, caso seja maior apague o registro\n",
+        "    df = df[df['loan_percent_income'] <= 1.0]\n",
+        "\n",
+        "    # Filtrar a inadimplência da pessoa X para inadimplentes, e Y para em dia, diferente apague o registro\n",
+        "    df = df[df['cb_person_default_on_file'].isin(['X', 'Y'])]\n",
+        "    # Modifica a inadinplência X = 0, e Y = 1;\n",
+        "    df['cb_person_default_on_file'] = df['cb_person_default_on_file'].map({'X': 0, 'Y': 1})\n",
+        "\n",
+        "    # Filtrar o comprimento do histórico de crédito da pessoa\n",
+        "    df = df[(df['cb_person_cred_hist_length'] >= 0) & (df['cb_person_cred_hist_length'] <= 5)]\n",
+        "\n",
+        "    return df\n",
+        "\n",
+        "# Chamar a função para corrigir os dados\n",
+        "df = corrigir_dados(df)\n",
+        "\n",
+        "# Salvar os dados corrigidos em um novo arquivo CSV\n",
+        "df.to_csv('credit_risk_dataset_corrigido.csv', index=False)"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [],
+      "metadata": {
+        "id": "eZIJitVkePGu"
+      },
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "source": [],
+      "metadata": {
+        "id": "Qw0Tcu72-xHq"
+      },
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "source": [],
+      "metadata": {
+        "id": "9APNWrYv-mX1"
+      }
+    },
+    {
+      "cell_type": "code",
+      "source": [],
+      "metadata": {
+        "id": "YmuBRrAi88Mv"
+      },
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "from google.colab import drive\n",
+        "drive.mount('/content/drive')"
+      ],
+      "metadata": {
+        "id": "LcX-mWYB8OMz"
+      },
+      "execution_count": null,
+      "outputs": []
+    }
+  ]
+}
