@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="stylesheet" type="text/css" href="css/nav-menu.css">
+    <link rel="stylesheet" type="text/css" href="css/contador.css">
+    <title>Contador</title>
+</head>
+
+<body>
+    <header id="nav-container"></header>
+    <main>
+        <section id="contador">
+            <header>
+                <h1>Contador</h1>
+            </header>
+            <div id="conteudo">
+                <div id="entrada">
+                    <p>Inicio</p>
+                    <input type="number" name="txt-inicio" id="txt-inicio" placeholder=" Digite aqui">
+                    <p>Fim</p>
+                    <input type="number" name="txt-fim" id="txt-fim" placeholder=" Digite aqui">
+                    <p>Passos</p>
+                    <input type="number" name="txt-passos" id="txt-passos" placeholder=" Digite aqui">
+
+                    <p>
+                        <input id="btn" type="button" value="Contar" onclick="contar()">
+                    </p>
+                </div>
+                <div id="resultado">
+                    <h3>PREENCHA OS DADOS AO LADO PARA VER O RESULTADO</h3>
+                    <p id="resultado-texto">
+
+                    </p>
+                </div>
+            </div>
+        </section>
+    </main>
+    <footer id="footer-container">
+    </footer>
+    <script src="loadNavBar.js"></script>
+    <script src="loadFooter.js"></script>
+    <script src="contador.js"></script>
+</body>
+
+</html>

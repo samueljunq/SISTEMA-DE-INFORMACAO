@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="stylesheet" type="text/css" href="nav-menu.css">
+    <link rel="stylesheet" type="text/css" href="idade.css">
+    <title>Verificador de Idade</title>
+</head>
+
+<body>
+    <header id="nav-container"></header>
+    <main>
+        <section id="idade">
+            <header>
+                <h1>Verificador de Idade</h1>
+            </header>
+            <div id="conteudo">
+                <div id="entrada">
+                    <p>Ano de Nascimento:</p>
+                    <input type="number" name="txt-ano" id="txt-ano" placeholder=" Digite aqui">
+                    <p>Sexo:</p>
+                    <input type="radio" name="radsex" id="M">
+                    <label for="M">Masculino</label>
+                    <input type="radio" name="radsex" id="F">
+                    <label for="F">Feminino</label>
+                    <p>
+                        <input id="btn" type="button" value="Verificar" onclick="verificar()">
+                    </p>
+                    <p id="resultado-texto"></p>
+                </div>
+                <div id="resultado">
+                    <h3>PREENCHA OS DADOS AO LADO PARA VER O RESULTADO</h3>
+                </div>
+            </div>
+        </section>
+    </main>
+    <footer id="footer-container">
+    </footer>
+    <script src="loadNavBar.js"></script>
+    <script src="loadFooter.js"></script>
+    <script src="idade.js"></script>
+</body>
+
+</html>

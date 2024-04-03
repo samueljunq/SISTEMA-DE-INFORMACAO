@@ -1,0 +1,89 @@
+#idade {
+    display: grid;
+    font-weight: bold;
+    place-content: center;
+    text-align: center;
+    color: #000000;
+    gap: 25px;
+    height: 100%;
+    width: 100%;
+}
+
+#idade header h1 {
+    font-size: 40px;
+    border-bottom: 1px solid;
+}
+
+#conteudo {
+    width: 700px;
+    background-color: rgba(0, 0, 0, 0.829);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    color: rgb(255, 255, 255);
+    border-radius: 20px;
+    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.582);
+}
+
+#entrada,
+#resultado {
+    padding: 20px;
+    text-align: left;
+}
+
+#entrada #txt-ano {
+    height: 25px;
+    border: 1px solid lightgray;
+    width: 100%;
+    margin: 10px 0 15px 0;
+}
+
+
+#entrada #M,
+#entrada #F {
+    margin-top: 10px;
+    margin-bottom: 15px;
+}
+
+#entrada label {
+    margin-right: 30px;
+}
+
+#entrada p #btn {
+    border: none;
+    font-weight: bold;
+    background-color: #333;
+    color: rgb(7, 2, 2);
+    box-shadow: 1px 1px 10px white;
+    height: 35px;
+    border-radius: 30px;
+    width: 50%;
+    text-align: center;
+    display: block;
+    margin: auto;
+    margin-top: 20px;
+    opacity: 0.8;
+}
+
+#entrada p #btn:hover {
+    opacity: 1;
+    box-shadow: 1px 1px 30px white;
+    transition: .2s ease-in-out;
+}
+
+#resultado {
+    text-align: center;
+    background-color: #ffffff;
+    color: #222;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+}
+
+#resultado img {
+    padding: 10px 0;
+    margin: auto;
+    border-radius: 10%;
+}
+
+#resultado-texto {
+    margin-top: 30px;
+}
