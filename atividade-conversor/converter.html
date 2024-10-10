@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Conversor de Bases</title>
+<link rel="stylesheet" href="style.css">
+<script defer src="converter.js"></script>
+</head>
+<body>
+<header>
+    <h1>Conversor de Bases Numéricas</h1>
+    <nav>
+        <a href="index.html">Início</a>
+        <a href="converter.html">Conversor</a>
+    </nav>
+</header>
+<main>
+    <div class="converter-container">
+        <div class="converter-box">
+            <h3>Decimal para outras bases</h3>
+            <input type="number" id="decimal" placeholder="Insira o número decimal">
+            <button onclick="convertDecimal()">Converter</button>
+        </div>
+
+        <div class="converter-box">
+            <h3>Binário para outras bases</h3>
+            <input type="text" id="binary" placeholder="Insira o número binário">
+            <button onclick="convertBinary()">Converter</button>
+        </div>
+
+        <div class="converter-box">
+            <h3>Hexadecimal para outras bases</h3>
+            <input type="text" id="hexadecimal" placeholder="Insira o número hexadecimal">
+            <button onclick="convertHex()">Converter</button>
+        </div>
+
+        <div class="converter-box">
+            <h3>Octal para outras bases (EXTRA)</h3>
+            <input type="text" id="octal" placeholder="Insira o número octal">
+            <button onclick="convertOctal()">Converter</button>
+        </div>
+    </div>
+
+    <div id="result-modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <p id="result-text"></p>
+        </div>
+    </div>
+</main>
+</body>
+</html>

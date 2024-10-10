@@ -1,0 +1,99 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+body {
+    font-family: "Poppins", sans-serif;
+    }
+    
+    header {
+    background-color: #b50ffc;
+    color: white;
+    padding: 10px 0;
+    text-align: center;
+    }
+    
+    nav a {
+    margin: 0 15px;
+    color: white;
+    text-decoration: none;
+    }
+    
+    .converter-container {
+    display: flex;
+    justify-content: space-around;
+    margin: 20px;
+    }
+    
+    .converter-box {
+    border-radius:10px;
+    background-color: #f4f4f4;
+    padding: 20px;
+    border: 1px solid #ddd;
+    width: 30%;
+    text-align: center;
+    }
+    
+    .converter-box input {
+    border-radius: 5px;
+    border-color: #888;
+    width: 80%;
+    padding: 10px;
+    margin: 10px 0;
+    }
+    
+    button {
+    background-color: #990ffc;
+    border-radius: 5px;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    }
+    
+    button:hover {
+    background-color: #c50ffc;
+    }
+    
+    /* Modal */
+    .modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.5);
+    }
+    
+    .modal-content {
+    background-color: #fff;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 40%;
+    }
+    
+    .close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    }
+    
+    .close:hover,
+    .close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+    }
+    @media (max-width: 768px) {
+        .converter-container {
+            flex-direction: column;
+            align-items: center;
+        }
+    
+        .converter-box {
+            width: 80%;
+            margin-bottom: 20px;
+        }
+    }
